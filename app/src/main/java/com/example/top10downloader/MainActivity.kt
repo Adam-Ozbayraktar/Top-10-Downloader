@@ -30,14 +30,21 @@ class FeedEntry {
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
+    private val downloadData by lazy { DownloadData(this, xmlListView) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         Log.d(TAG, "onCreate called")
-        val downloadData = DownloadData(this, xmlListView)
+//        val downloadData = DownloadData(this, xmlListView)
         downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=25/xml")
         Log.d(TAG, "onCreate: done")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        downloadData.cancel(true)
     }
 
     companion object {
@@ -60,7 +67,6 @@ class MainActivity : AppCompatActivity() {
 
                 val arrayAdapter = ArrayAdapter<FeedEntry>(propContext, R.layout.list_item, parseApplications.applications)
                 propListView.adapter = arrayAdapter
-
             }
 
             override fun doInBackground(vararg url: String?): String {
