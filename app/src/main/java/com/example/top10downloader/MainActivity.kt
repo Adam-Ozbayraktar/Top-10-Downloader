@@ -22,7 +22,7 @@ class FeedEntry {
     override fun toString(): String {
         return """
             name = $name
-            artist = $artist 
+            artist = $artist
             releaseDate = $releaseDate
             imageURL = $imageURL
         """.trimIndent()
