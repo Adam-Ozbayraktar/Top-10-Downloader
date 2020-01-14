@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,7 +32,7 @@ class FeedEntry {
 }
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
-
+    private var testLimit = ""
 //    private val downloadData by lazy { DownloadData(this, xmlListView) }
     private var downloadData: DownloadData? = null
     private var feedUrl: String = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=%d/xml"
@@ -43,8 +45,38 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         Log.d(TAG, "onCreate called")
+
+        val listener = View.OnClickListener { v ->
+//            val b = v as Button
+
+            when(v as Button){
+                btnFreeApps -> {
+                    feedUrl = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=%d/xml"
+                }
+                btnPaidApps -> {
+                    feedUrl = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=%d/xml"
+                }
+                btnSongs -> {
+                    feedUrl = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=%d/xml"
+                }
+                btnTop10 -> {
+                    feedLimit = 10
+                }
+                btnTop25 -> {
+                    feedLimit = 25
+                }
+            }
+
+            Log.d(TAG, feedUrl.format(feedLimit))
+            downloadUrl(feedUrl.format(feedLimit))
+        }
+
+        btnTop10.setOnClickListener(listener)
+        btnTop25.setOnClickListener(listener)
+        btnFreeApps.setOnClickListener(listener)
+        btnPaidApps.setOnClickListener(listener)
+        btnSongs.setOnClickListener(listener)
 
         if (savedInstanceState != null){
             feedUrl = savedInstanceState.getString(STATE_URL, "")
