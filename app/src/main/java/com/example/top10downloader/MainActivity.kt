@@ -32,7 +32,7 @@ class FeedEntry {
 }
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
-    private var testLimit = ""
+
 //    private val downloadData by lazy { DownloadData(this, xmlListView) }
     private var downloadData: DownloadData? = null
     private var feedUrl: String = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=%d/xml"

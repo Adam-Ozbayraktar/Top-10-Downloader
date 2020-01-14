@@ -7,51 +7,65 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="0dp"
+        android:layout_width="327dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text="TextView"
         android:textColor="#0E0D0D"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageDisplay"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvArtist"
-        android:layout_width="0dp"
+        android:layout_width="327dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="end"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="TextView"
-        android:textAlignment="textEnd"
         android:textColor="#0E0D0D"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageDisplay"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
-        android:id="@+id/tvSummary"
-        android:layout_width="0dp"
+        android:id="@+id/tvNumber"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text="TextView"
-        android:textColor="#111010"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvArtist" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageDisplay"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNumber"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[2]"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+
+         />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageDisplay"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvNumber"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars[2]" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
