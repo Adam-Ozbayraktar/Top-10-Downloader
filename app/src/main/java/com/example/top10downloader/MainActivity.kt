@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -85,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         downloadUrl(feedUrl.format(feedLimit))
         Log.d(TAG, "onCreate: done")
+
     }
 
     private fun downloadUrl(feedUrl: String) {
@@ -167,6 +169,12 @@ class MainActivity : AppCompatActivity() {
 
                 val feedAdapter = FeedAdapter(propContext, R.layout.list_record, parseApplications.applications)
                 propListView.adapter = feedAdapter
+                propListView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+//                    val selectedItem = parent.getItemAtPosition(position) as String
+                    val selectedItem = parent.getItemAtPosition(1)
+//                    Toast.makeText(propContext, selectedItem, Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, selectedItem.toString())
+                }
             }
 
             override fun doInBackground(vararg url: String?): String {
