@@ -7,9 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URL
@@ -171,9 +169,10 @@ class MainActivity : AppCompatActivity() {
                 propListView.adapter = feedAdapter
                 propListView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
 //                    val selectedItem = parent.getItemAtPosition(position) as String
-                    val selectedItem = parent.getItemAtPosition(1)
-//                    Toast.makeText(propContext, selectedItem, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, selectedItem.toString())
+//                    val selectedItem = parent.getItemAtPosition(1)
+                    val selectedItem = view.findViewById<TextView>(R.id.tvName)
+                    Toast.makeText(propContext, selectedItem.text.toString(), Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, selectedItem.text.toString())
                 }
             }
 
